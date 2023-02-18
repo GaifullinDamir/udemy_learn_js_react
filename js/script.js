@@ -1,19 +1,32 @@
 "use strict";
 
-const numberOfFilms = +prompt('Сколько фильмов вы уже посмотрели?', '');
+function SayHello(name){
+    return `Привет, ${name}!`;
+}
 
-const personalMovieDB = {
-    count: numberOfFilms,
-    movies:{},
-    actors:{},
-    genres:[],
-    private: false
-};
+function ReturnNeighboringNumbers(inNumber){
+    return [inNumber - 1, inNumber, inNumber + 1];
+}
 
-const lastMovie1 = prompt('Один из последних просмотренных фильмов?', ''),
-    rating1 = +prompt('На сколько оцениваете его?',''),
-    lastMovie2 = prompt('Один из последних просмотренных фильмов?', ''),
-    rating2 = +prompt('На сколько оцениваете его?','');
+function GetMathResult(base, quantity){
+    
+    if(typeof(quantity) === 'number' && quantity > 0){
+        let result = '';
+        let tempBase = base;
+        let delta = base;
 
-personalMovieDB.movies[lastMovie1] = rating1;
-personalMovieDB.movies[lastMovie2] = rating2;
+        for(let i = 0; i < quantity; i++){
+            tempBase += delta;
+            if(i + 1 != quantity){
+                result += `${tempBase}---`;
+            } else {
+                result += `${tempBase}`;
+            }
+        }
+        return result;
+    } else {
+        return base;
+    }
+}
+
+console.log(GetMathResult(5, 3));
