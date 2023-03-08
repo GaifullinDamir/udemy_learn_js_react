@@ -1,32 +1,52 @@
 "use strict";
 
-function SayHello(name){
-    return `Привет, ${name}!`;
-}
-
-function ReturnNeighboringNumbers(inNumber){
-    return [inNumber - 1, inNumber, inNumber + 1];
-}
-
-function GetMathResult(base, quantity){
-    
-    if(typeof(quantity) === 'number' && quantity > 0){
-        let result = '';
-        let tempBase = base;
-        let delta = base;
-
-        for(let i = 0; i < quantity; i++){
-            tempBase += delta;
-            if(i + 1 != quantity){
-                result += `${tempBase}---`;
-            } else {
-                result += `${tempBase}`;
-            }
-        }
-        return result;
-    } else {
-        return base;
+const personalPlanPeter = {
+    name: "Peter",
+    age: "29",
+    skills: {
+        languages: ['ru', 'eng'],
+        programmingLangs: {
+            js: '20%',
+            php: '10%',
+            ruby: '30%'
+        },
+        exp: '1 month'
+    },
+    showAgeAndLangs: function(obj){
+        let strLangs = `${obj['skills']['languages'][0]} ${obj['skills']['languages'][1]}`;
+        strLangs = strLangs.toUpperCase();
+        return `Мне ${obj['age']} и я владею языками ${strLangs}`;
     }
+};
+
+// function showExperience(obj){
+
+//     const {languages, programmingLangs, exp} = obj.skills;
+//     const{js, php, ruby} = programmingLangs;
+//     console.log(`${languages} ${js} ${php} ${ruby} ${exp}`);
+// }
+// showExperience(personalPlanPeter);
+// console. log(showExperience(personalPlanPeter));
+
+// console.log(5);
+
+function showExperience(obj){
+    return obj['skills']['exp'];
 }
 
-console.log(GetMathResult(5, 3));
+function showProgrammingLangs(obj){
+    const {js, php, ruby} = obj['skills']['programmingLangs'];
+    let result = "";
+    if(js != null){
+        result +=`Язык JS изучен на ${js}.\n`;
+    }
+    if(php != null){
+        result += `Язык PHP изучен на ${php}.\n`;
+    }
+    if(ruby != null){
+        result += `Язык RUBY изучен на ${ruby}.`;
+    }
+    return result;
+}
+
+console.log(personalPlanPeter.showAgeAndLangs(personalPlanPeter));
